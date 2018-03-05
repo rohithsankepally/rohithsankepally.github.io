@@ -1,15 +1,15 @@
 ---
 layout: page
-title: About
+title: About Me.
 permalink: /about/
 ---
 
-Some information about you!
+Hello! My name is Rohith Reddy and I live in Hyderabad, India. I'm currently pursuing my Masters by research at [International Institute of Information Technology](https://www.iiit.ac.in/), Hyderabad. I'm a programmer, researcher and an open source enthusiast. 
 
-### More Information
 
-A place to include any other types of information that you'd like to include about yourself.
-
-### Contact me
-
-[email@domain.com](mailto:email@domain.com)
+# Experience 
+* Teaching Assistant at IIIT Hyderabad
+* Software Developer Intern at Sprinklr Technologies
+* Mentor at Google Summer of Code 2017
+* Open Source Developer at Google Summer of Code 2016
+* Student Placement Coordinator at IIIT Hyderabad

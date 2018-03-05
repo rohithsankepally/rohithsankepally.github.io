@@ -1,11 +1,11 @@
 ---
 layout: post
-title: About Me.
+title: Hello, I am Rohith Reddy.
 ---
 
 
-I'm a MS by research student at the Lab for Spatial Informatics, IIIT Hyderabad. 
+I'm a MS by research student at the [Lab for Spatial Informatics](http://lsi.iiit.ac.in/), IIIT Hyderabad. 
 
-I'm an open source enthusiast. I worked as a open source developer for the Google Summer of Code 2016. I also worked as a mentor for the Google Summer of Code 2017.
+I'm a programmer, researcher and an open source enthusiast. I'm an open source developer and mentor at [pgRouting](http://pgrouting.org/). I'm an active volunteer and a speaker at [Swecha Foundation](http://swecha.org/) - a non profit organisation that promotes open source software. I'm a charter member at the [Open Source Geo Spatial Foundation](https://www.osgeo.org/).
 
 I'm interested in GIS, open source, data science, databases, computer networks, graphs and path algorithm optimizations. I mostly code in C/C++, but also have experience with python, SQL programming, HTML, Javascript, PHP.
