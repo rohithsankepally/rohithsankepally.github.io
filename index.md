@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Hello, I am Rohith Reddy.
+title: About Me.
 ---
 
 
