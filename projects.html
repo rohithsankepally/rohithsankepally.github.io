@@ -7,13 +7,16 @@ published: true
   	{% if post.project == true %}
 	    <article class="post">
 
-	      <h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
+	      <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
 
-	      <div class="entry">
+	      <!--<div class="entry">
 	        {{ post.excerpt }}
 	      </div>
 
-	      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
+	      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>-->
+	      <div class="date">
+    		Posted on {{ post.date | date: "%B %e, %Y" }}
+  		  </div>
 	    </article>
     {% endif %}
   {% endfor %}

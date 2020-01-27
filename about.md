@@ -1,15 +1,19 @@
 ---
 layout: page
-title: About Me.
+title: About Me
 permalink: /about/
 ---
 
-Hello! My name is Rohith Reddy and I live in Hyderabad, India. I'm currently pursuing my Masters by research at [International Institute of Information Technology](https://www.iiit.ac.in/), Hyderabad. I'm a programmer, researcher and an open source enthusiast. 
+Hey there, I am Rohith Reddy. 
+
+* Currently working as a Product Engineer at [Sprinklr Inc.](https://www.https://www.sprinklr.com/), Gurgaon.
+* Obtained my Masters & Bachelors from [International Institute of Information Technology](https://www.iiit.ac.in/) in Computer Science.
+* I'm addicted to travelling and exploring new places(on earth :p).
+* Enjoy playing adventurous sports.
+* Grew up in Hyderabad, India.
 
 
-# Experience 
-* Teaching Assistant at IIIT Hyderabad
-* Software Developer Intern at Sprinklr Technologies
-* Mentor at Google Summer of Code 2017
-* Open Source Developer at Google Summer of Code 2016
-* Student Placement Coordinator at IIIT Hyderabad
+
+
+<!--Worked as Software Developer Intern at [Sprinklr Inc.](https://www.https://www.sprinklr.com/)
+* Worked as a developer & mentor at Google Summer of Code 2016-2018 for [pgRouting](http://pgrouting.org/)-->

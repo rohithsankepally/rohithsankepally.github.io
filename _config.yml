@@ -6,10 +6,10 @@
 name: Rohith Reddy
 
 # Short bio or description (displayed in the header)
-description: MS student at IIIT Hyderabad
+description: Product Engineer at Sprinklr Inc.
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar: https://raw.githubusercontent.com/iamrohith94/iamrohith94.github.io/master/images/profile.jpg
+avatar: https://avatars0.githubusercontent.com/u/2110492?s=460&v=4
 
 #
 # Flags below are optional
@@ -18,12 +18,12 @@ avatar: https://raw.githubusercontent.com/iamrohith94/iamrohith94.github.io/mast
 # Includes an icon in the footer for each username you enter
 footer-links:
   dribbble:
-  email: rohithreddy2219@gmail.com
+  email: iamrohith94@gmail.com
   facebook: iamrohith94
   flickr:
   github: iamrohith94
   instagram:
-  linkedin: rohith-reddy-637148a0/
+  linkedin: iamrohith94/
   pinterest:
   rss: # just type anything here for a working RSS icon
   twitter: iamrohith94
@@ -76,6 +76,7 @@ sass:
 gems:
   - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
   - jekyll-feed # Create an Atom feed using the official Jekyll feed gem
+  - jekyll-gist
 
 # Exclude these files from your production _site
 exclude:

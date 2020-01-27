@@ -1,11 +1,18 @@
 ---
-layout: post
-title: Hello, I am Rohith Reddy.
+layout: page
+title: About Me
 ---
 
+Hey there, I am Rohith Reddy. 
 
-I'm a MS by research student at the [Lab for Spatial Informatics](http://lsi.iiit.ac.in/), IIIT Hyderabad. 
+* Currently working as a Product Engineer at [Sprinklr Inc.](https://www.https://www.sprinklr.com/), Gurgaon.
+* Obtained my Masters & Bachelors from [International Institute of Information Technology](https://www.iiit.ac.in/) in Computer Science.
+* I'm addicted to travelling and exploring new places(on earth :p).
+* Enjoy playing adventurous sports.
+* Grew up in Hyderabad, India.
 
-I'm a programmer, researcher and an open source enthusiast. I'm an open source developer and mentor at [pgRouting](http://pgrouting.org/). I'm an active volunteer and a speaker at [Swecha Foundation](http://swecha.org/) - a non profit organisation that promotes open source software. I'm a charter member at the [Open Source Geo Spatial Foundation](https://www.osgeo.org/).
 
-I'm interested in GIS, open source, data science, databases, computer networks, graphs and path algorithm optimizations. I mostly code in C/C++, but also have experience with python, SQL programming, HTML, Javascript, PHP.
+
+
+<!--Worked as Software Developer Intern at [Sprinklr Inc.](https://www.https://www.sprinklr.com/)
+* Worked as a developer & mentor at Google Summer of Code 2016-2018 for [pgRouting](http://pgrouting.org/)-->

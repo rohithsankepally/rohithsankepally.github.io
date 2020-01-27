@@ -25,7 +25,7 @@ body {
 
 .container {
   margin: 0 auto;
-  max-width: 740px;
+  max-width: 1000px;
   padding: 0 10px;
   width: 100%;
 }
@@ -229,7 +229,6 @@ nav {
     text-align: right;
     font-weight: 300;
     letter-spacing: 1px;
-
     @include mobile {
       margin: 0 10px;
       color: $blue;
