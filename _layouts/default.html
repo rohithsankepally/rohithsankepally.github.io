@@ -29,9 +29,9 @@
           </div>
 
           <nav>
-            <a href="{{ site.baseurl }}/about">About</a>
-            <a href="{{ site.baseurl }}/projects">Projects</a>
+            <!--<a href="{{ site.baseurl }}/about">About</a>-->
             <a href="{{ site.baseurl }}/blogs">Blogs</a>
+            <a href="{{ site.baseurl }}/projects">Projects</a>
             <a href="{{ site.baseurl }}/contact">Contact</a>
           </nav>
         </header>
@@ -42,14 +42,16 @@
       {{ content }}
     </div>
 
-    <div class="wrapper-footer">
+    <!-- <div class="wrapper-footer">
       <div class="container">
         <footer class="footer">
           {% include svg-icons.html %}
         </footer>
       </div>
-    </div>
+    </div> -->
 
-    {% include analytics.html %}
+    {% if jekyll.environment == 'production' %}
+      {% include analytics.html %}
+    {% endif %}
   </body>
 </html>

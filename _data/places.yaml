@@ -1,0 +1,67 @@
+- title: "Google Summer of Code, Mentor Summit 2017"
+  url: "https://opensource.googleblog.com/2017/11/google-summer-of-code-2017-mentor-summit.html"
+  location:
+    latitude: 37.422276
+    longitude: -122.085404
+
+- title: "FOSS4G 2018"
+  url: "https://2018.foss4g.org/"
+  location:
+    latitude: -6.810672
+    longitude: 39.292131
+
+- title: "DEXA 2018"
+  url: "http://www.dexa.org/previous/dexa2018/dexa2018.html"
+  location:
+    latitude: 48.999389
+    longitude: 12.093584
+
+- title: "Post Conference Fun @ Amsterdam"
+  location:
+    latitude: 52.394197
+    longitude: 4.880608
+
+- title: "Midnight Transit @ Abu Dhabi"
+  location:
+    latitude: 24.467222
+    longitude: 54.389665
+
+- title: "Solo Travelling @ Munich"
+  location:
+    latitude: 48.135188
+    longitude: 11.582346
+
+- title: "Sprinklr Annual Party @ Goa"
+  location:
+    latitude: 15.491806
+    longitude: 73.831623
+
+- title: "Into the cold mountains @ Kasol"
+  location:
+    latitude: 32.010351
+    longitude: 77.314731
+
+- title: "Family time @ Manali"
+  location:
+    latitude: 32.244460
+    longitude: 77.189349
+
+- title: "Zanzibar Islands"
+  location:
+    latitude: -6.146324
+    longitude: 39.251887
+
+- title: "Las Vegas"
+  location:
+    latitude: 36.171493
+    longitude: -115.137929
+
+- title: "Paramount Studios"
+  location:
+    latitude: 34.086070
+    longitude: -118.320771
+
+- title: "Pondicherry"
+  location:
+    latitude: 11.943013
+    longitude: 79.806490

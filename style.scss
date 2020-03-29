@@ -23,6 +23,12 @@ body {
   color: $darkGray;
 }
 
+
+row {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
 .container {
   margin: 0 auto;
   max-width: 1000px;
@@ -282,7 +288,75 @@ footer {
   text-align: center;
 }
 
+.content-section {
+    margin-top: 100px;
+    padding-top: 100px;
+    @media(min-width:767px) {
+        margin-top: 125px;
+        padding-top: 125px;
+    }
+    /* Added in { Personal } for responsive images in posts and section contents */
+    img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 0 auto;
+        border: 1px solid $font-color;
+    }
+    /* Added in { Personal } */
+    ul,
+    ol {
+        text-align: center;
+        margin: 0 0 25px;
+        font-size: 18px;
+        line-height: 1.5;
+        list-style-position: inside;
+    }
+    pre {
+      padding: 0;
+      > code {
+        text-align: left;
+      }
+    }
+    img.emoji {
+      /* Override any img styles to ensure Emojis are displayed inline */
+      margin: 0px !important;
+      display: inline !important;
+      border: 1px solid $primary-color !important;
+    }
+
+    /* Added in { Personal } */
+    &#post {
+        div.author img {
+            border: 0px;
+            margin-bottom: 20px;
+            padding: 4px;
+        }
+    }
+}
+
+table{
+    border-collapse: collapse;
+    border-spacing: 1;
+    border:2px solid #ff0000;
+}
+
+th{
+    border:2px solid #000000;
+    text-align:center;
+    padding: 5px;
+    font-style: italic;
+}
+
+td{
+    border:2px solid #000000;
+    text-align: center;
+    padding: 8px;
+    white-space:pre-line;
+}
+
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
 @import "highlights";
 @import "svg-icons";
+@import "timeline";

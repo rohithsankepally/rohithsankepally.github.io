@@ -1,0 +1,39 @@
+      <div style="text-align:center;padding-top: 50px">
+              <h1 class="site-name">My Journey</h1>
+      </div>
+          <div>
+            <div class="col-md-10 col-md-offset-1">
+              <ul class="timeline">
+                {% for post in site.posts %}
+                  {% if post.event == true%}
+
+                  {% assign loopindex = forloop.index | modulo: 2 %}
+                  {% capture class %}
+                  {% if loopindex == 0 %}
+                    timeline-inverted
+                  {% endif %}
+                  {% endcapture %}
+
+                  <li class="{{ class }}">
+                    <div class="timeline-image">
+                       <a href="{{post.link}}">
+                        <img src="{{site.baseurl}}{{ post.image }}" alt="{{post.title}}">
+                      </a>
+                    </div>
+                    <div class="timeline-panel">
+                    <div class="timeline-heading">
+                      <h4>{{ post.duration }}</h4>
+                    </div>
+                    <div class="timeline-body">
+                      {{ post.description | markdownify }}
+                    </div>
+                  </div>
+                  </li>
+                  {% endif %}
+                {% endfor %}
+
+              </ul>
+            </div>
+          </div>
+        
+    

@@ -15,7 +15,7 @@ $lightGray: #eee;
 $white: #fff;
 
 // Font stacks
-$helvetica: Helvetica, Arial, sans-serif;
+$helvetica: Calibri, Arial, sans-serif;
 $helveticaNeue: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $georgia: Georgia, serif;
 
@@ -25,3 +25,23 @@ $georgia: Georgia, serif;
     @content;
   }
 }
+
+// Main color
+$primary-color: #000;
+
+// Anchor color
+$secondary-color: #00cdff;
+
+// Font color
+$font-color: #fff;
+
+$navbar-text-shadow: true;
+$header-text-shadow: true;
+$header-background-color: $primary-color;
+$intro-text-color: $font-color;
+$navbar-color: $font-color;
+$navbar-lg-collapse-background-color: $header-background-color;
+$navbar-lg-background: transparent;
+$navbar-sm-background-color: $navbar-lg-collapse-background-color;
+
+$social-buttons-color: $secondary-color;

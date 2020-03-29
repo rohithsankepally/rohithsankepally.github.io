@@ -1,16 +1,29 @@
 ---
 layout: page
-title: About Me
-permalink: /about/
 ---
 
-Hey there, I am Rohith Reddy. 
+Hello there. I guess you are here because you want to know more about me, right?
 
-* Currently working as a Product Engineer at [Sprinklr Inc.](https://www.https://www.sprinklr.com/), Gurgaon.
-* Obtained my Masters & Bachelors from [International Institute of Information Technology](https://www.iiit.ac.in/) in Computer Science.
-* I'm addicted to travelling and exploring new places(on earth :p).
-* Enjoy playing adventurous sports.
-* Grew up in Hyderabad, India.
+<h1 class="site-name">Code for a living</h1>
+
+
+
+<h1 class="site-name">Exploring the world, place by place</h1>
+
+I love travelling and exploring new places. Also, I enjoy adventurous sports. The pictures below are some of my favourite places and adventures of my life.
+
+{% include carousel.html height="50" unit="%" duration="1" %}
+
+I am on a mission to explore the world. To keep track of this, I always make a note of the places I visited. To make this interesting I have plotted them on a map and this is how it looks.
+
+<div style="text-align:center;">
+              <h1 class="site-name"></h1>
+              <div class="container" >
+        {% google_map src="_data/places.yaml" width="100%" %}
+        </div>
+      </div>
+
+
 
 
 
