@@ -16,16 +16,6 @@ I love travelling and exploring new places. Also, I enjoy adventurous sports. Th
 
 I am on a mission to explore the world. To keep track of this, I always make a note of the places I visited. To make this interesting I have plotted them on a map and this is how it looks.
 
-<div style="text-align:center;">
-              <h1 class="site-name"></h1>
-              <div class="container" >
-        {% google_map src="_data/places.yaml" width="100%" %}
-        </div>
-      </div>
-
-
-
-
 
 
 <!--Worked as Software Developer Intern at [Sprinklr Inc.](https://www.https://www.sprinklr.com/)
