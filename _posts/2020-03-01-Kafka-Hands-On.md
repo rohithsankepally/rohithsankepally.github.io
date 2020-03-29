@@ -28,21 +28,21 @@ To make the cluster setup easy, we use [`docker-compose`](https://docs.docker.co
 
 ### Kafka Brokers
 
-We use the [bitnami kafka](https://hub.docker.com/r/bitnami/kafka) image for the setup. A kafka cluster is a collection of kafka brokers. In this working example, our kafka cluster contains two brokers `broker-0` & `broker-1` which can be seen in the [`docker-compose.yml`](https://github.com/rohithsankepally/apache-kafka-blog/blob/master/hands-on/docker-compose.yml) file.
+We use the [bitnami kafka](https://hub.docker.com/r/bitnami/kafka) docker image for the setup. A kafka cluster is a collection of kafka brokers. In this working example, our kafka cluster contains two brokers `broker-0` & `broker-1` which can be seen in the [`docker-compose.yml`](https://github.com/rohithsankepally/apache-kafka-blog/blob/master/hands-on/docker-compose.yml) file.
 
 While launching a broker, we need to provide a configuration file which determines the properties of the broker. The [bitnami kafka](https://hub.docker.com/r/bitnami/kafka) docker image uses `/opt/bitnami/kafka/conf/server.properties` file for setting up the broker. For the purpose of this hands on, we use custom configuration file for each broker. Here, we create two files [`broker-0.properties`](https://github.com/rohithsankepally/apache-kafka-blog/blob/master/hands-on/broker-0.properties) & [`broker-1.properties`](https://github.com/rohithsankepally/apache-kafka-blog/blob/master/hands-on/broker-1.properties) which serve as configuration for the brokers. Thanks to [docker volumes](https://docs.docker.com/storage/volumes/), which helps to map these files in such a way that the bitnami kafka image uses these files for setting up the brokers.
 
 ### Zookeeper
 
-Kafka is built using zookeeper. [Zookeeper](https://zookeeper.apache.org/) is a distributed synchronization service used to manage a set of interconnected systems. Kafka uses zookeeper for coordination of brokers and also stores metadata of topics, partitions etc. The internal working of zookeeper is out of this blog's scope. Since kafka is dependent on zookeeper, before starting the kafka cluster, we ensure that zookeeper is up and running. We use the [bitnami zookeeper](https://hub.docker.com/r/bitnami/zookeeper) image to setup zookeeper. We can see from the [`docker-compose.yml`](https://github.com/rohithsankepally/apache-kafka-blog/blob/master/hands-on/docker-compose.yml) file that the kafka brokers `broker-0` & `broker-1` depend on `zookeeper`.
+Kafka is built using zookeeper. [Zookeeper](https://zookeeper.apache.org/) is a distributed synchronization service used to manage a set of interconnected systems. Kafka uses zookeeper for coordination of brokers and also stores metadata of topics, partitions etc. The internal working of zookeeper is out of this blog's scope. Since kafka is dependent on zookeeper, before starting the kafka cluster, we ensure that zookeeper is up and running. We use the [bitnami zookeeper](https://hub.docker.com/r/bitnami/zookeeper) docker image to setup zookeeper. We can see from the [`docker-compose.yml`](https://github.com/rohithsankepally/apache-kafka-blog/blob/master/hands-on/docker-compose.yml) file that the kafka brokers `broker-0` & `broker-1` depend on `zookeeper`.
 
-Now that we have defined all the dependencies, its time to launch our kafka cluster. All that you have to do is, navigate to the `hands-on` directory in repository and execute the commands below
+Now that we have defined all the dependencies, its time to launch our kafka cluster. All that you have to do is, navigate to the cloned repository and execute the commands below
 
 ```bash
 $ cd hands-on
 $ sh cluster-start.sh
 ```
-This should start the kafka cluster which comprises of the zookeeper and two kafka brokers. This can be verified by checking the list of running docker containers using the command below
+This should start the kafka cluster which comprises of the zookeeper and two kafka brokers. This can be verified by checking the list of running docker containers running the command below in a new terminal window.
 
 ```bash
 $ docker container ls
@@ -50,9 +50,9 @@ $ docker container ls
 
 | CONTAINER ID|  IMAGE  |   COMMAND | CREATED |  STATUS | PORTS  | NAMES 
 | ------------|---------|-----------|---------|---------|--------|-------
-|1c26dfb264db | bitnami/kafka:latest| "/entrypoint.sh /run…" | 7 seconds ago |  Up 6 seconds | 9092/tcp, 0.0.0.0:9093->9093/tcp | hands-on_broker-1_1 |
-|aa0f4f7073b1  |    bitnami/kafka:latest   |    "/entrypoint.sh /run…" |  8 seconds ago    |   Up 7 seconds   | 0.0.0.0:9092->9092/tcp | hands-on_broker-0_1 |
-|96f169a92a19  |  bitnami/zookeeper:latest | "/entrypoint.sh /run…" |  9 seconds ago   |    Up 8 seconds    |    2888/tcp, 3888/tcp, 0.0.0.0:2181->2181/tcp, 8080/tcp   |hands-on_zookeeper_1
+|1c26dfb264db | bitnami/kafka:latest| "/entrypoint.sh /run…" | 7 seconds ago |  Up 6 seconds | 9092/tcp, 0.0.0.0:9093->9093/tcp | broker-1 |
+|aa0f4f7073b1  |    bitnami/kafka:latest   |    "/entrypoint.sh /run…" |  8 seconds ago    |   Up 7 seconds   | 0.0.0.0:9092->9092/tcp | broker-0 |
+|96f169a92a19  |  bitnami/zookeeper:latest | "/entrypoint.sh /run…" |  9 seconds ago   |    Up 8 seconds    |    2888/tcp, 3888/tcp, 0.0.0.0:2181->2181/tcp, 8080/tcp   |zookeeper
 
 You should see three containers(one zookeeper & two kafka) up and running as shown above. With this we have finished setting up the kafka cluster.
 
@@ -98,7 +98,7 @@ We first setup consumers subscribed to the above generated topic followed by wri
 $ docker run --network=hands-on_kafka-tier --name=consumer-0 -ti bitnami/kafka:latest kafka-console-consumer.sh --bootstrap-server broker-0:9092,broker-1:9093 --topic cars --consumer-property group.id=car-group
 ```
 
-Inorder to launch the second consumer instance, open another terminal window and execute the same command with a different name say `consumer-1`.
+Inorder to launch the second consumer instance, open another terminal window and execute the same command with a different name say `consumer-1` as shown below.
 
 ```bash
 $ docker run --network=hands-on_kafka-tier --name=consumer-1 -ti bitnami/kafka:latest kafka-console-consumer.sh --bootstrap-server broker-0:9092,broker-1:9093 --topic cars --consumer-property group.id=car-group
@@ -141,12 +141,12 @@ GROUP  | TOPIC | PARTITION | CURRENT-OFFSET | LOG-END-OFFSET | LAG | CONSUMER-ID
 car-group  |   cars | 1  | 0   |0    |0  |         consumer-car-group-1-3cf14661-c5cc-43f6-8320-88ee3381e658 | /172.27.0.5 |     consumer-car-group-1
 car-group  |     cars  |  0  |1   | 1  | 0 |consumer-car-group-1-32e408ce-6ba3-4506-92e9-5f4827d083fe | /172.27.0.6 |   consumer-car-group-1
 
-We can see that the `CURRENT-OFFSET` of consumer reading from *cars-0* is 1. This indicates that it has processed the above message. Let's write another message by going to the terminal window running the producer instance.
+We can see that the `CURRENT-OFFSET` of consumer reading from *cars-0* is 1. This indicates that it has processed the above message. Let's write another message by going to the terminal window which is running the producer instance.
 
 ```bash
 > BMW
 ```
-We can see that this message is consumed by the other consumer. Let us verify this by checking the status of the consumers again.
+From the terminal windows running the consumer instances, we can see that this message is processed by the other consumer. Let us verify this by checking the status of the consumers again.
 
 ```bash
 $ docker run --network=hands-on_kafka-tier -ti bitnami/kafka:latest kafka-consumer-groups.sh  --bootstrap-server broker-0:9092,broker-1:9093 --describe --group car-group
@@ -176,9 +176,9 @@ This command stops `broker-0` which can be verified by `docker container ls` com
 $ docker run --network=hands-on_kafka-tier -ti bitnami/kafka:latest kafka-topics.sh  --zookeeper zookeeper:2181 --describe cars
 ```
 
-`Topic: cars	PartitionCount: 2	ReplicationFactor: 2	Configs: 
- Topic: cars	Partition: 0	Leader: 1	Replicas: 0,1	Isr: 1
- Topic: cars	Partition: 1	Leader: 1	Replicas: 1,0	Isr: 1`
+`Topic: cars	PartitionCount: 2	ReplicationFactor: 2	Configs:` <br>
+`Topic: cars	Partition: 0	Leader: 1	Replicas: 0,1	Isr: 1`<br>
+`Topic: cars	Partition: 1	Leader: 1	Replicas: 1,0	Isr: 1`
 
 By comparing this with the previous status of topic *cars*, we can clearly see that for *Partition: 0*, the leader has changed from `Leader: 0` to `Leader: 1` i.e *broker-0* to *broker-1*. Since, *broker-0* is down, it is not in sync with the new leader(*broker-1*) and therefore the `Isr` is changed from `0,1` to `1`. Thus the cluster stays unaffected even after one of the brokers is down, with the other broker acting as the sole leader for both the partitions. You can further check this by writing more messages and verify that they are getting processed by the consumers. 
 
@@ -207,4 +207,4 @@ Both the above demonstrations indicate the fault tolerant behaviour of kafka.
 
 ## Conclusion
 
-This blog tried to give a practical explanation about interactions between architectural components within a Kafka cluster. In addition to this the hands-on also demonstrated the fault tolerant behaviour of kafka. Hopefully this gave you a good understanding on how things work under the hood. Also, you now have enough knowledge to setup your own kafka cluster. Please do share your feedback in the comments section below. In the next blog post we’ll be going over the internals of Apache Kafka. Stay tuned & Happy Coding !!
+This blog tried to give a practical explanation about interactions between architectural components within a Kafka cluster. In addition to this the hands-on also demonstrated the fault tolerant behaviour of kafka. Hopefully this gave you a good understanding on how things work under the hood. Also, you now have enough knowledge to setup your own kafka cluster. Please do share your feedback in the comments section below. In the upcoming blog post we’ll be going over the internals of Apache Kafka. Stay tuned & Happy Coding !!
