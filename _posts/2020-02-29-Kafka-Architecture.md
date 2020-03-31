@@ -8,7 +8,7 @@ comments: true
 ---
 
 
-[Apache Kafka](https://kafka.apache.org/) is a *distributed* *streaming* platform. Well known for its scalability & fault tolerance, *Apache Kafka* is extensively used to build real time data pipelines and streaming applications. It was originally developed by [LinkedIn](https://www.linkedin.com/) and was later open sourced through [Apache](https://www.apache.org/) Foundation.
+[Apache Kafka](https://kafka.apache.org/) is a *distributed* *streaming* platform. Well known for its scalability & fault tolerance, *Apache Kafka* is extensively used to build real time data pipelines and streaming applications. It was originally developed by [LinkedIn](https://www.linkedin.com/) and was later open sourced through [Apache](https://www.apache.org/) Foundation. Apache Kafka is widely used in production by well known companies like Uber, Netflix, Twitter, Spotify, LinkedIn etc. You can find the complete list [here](https://cwiki.apache.org/confluence/display/KAFKA/Powered+By). In a recent [article](https://engineering.linkedin.com/blog/2019/apache-kafka-trillion-messages) published by LinkedIn, more than 7 trillion messages are processed per day which serves as a testament to Kafka's scale.
 
 
 <p align="center">
