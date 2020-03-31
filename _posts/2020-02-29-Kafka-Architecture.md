@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Getting Started With Apache Kafka - Architecture
+title: Learn Apache Kafka Architecture | The Easy Way
 blog : true
 published: true
 date: February 29, 2020

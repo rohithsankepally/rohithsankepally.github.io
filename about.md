@@ -1,5 +1,6 @@
 ---
 layout: page
+title: About
 ---
 
 Hello there. I guess you are here because you want to know more about me, right?

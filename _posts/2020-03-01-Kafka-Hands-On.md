@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Getting Started With Apache Kafka - Quick Hands On
+title: Apache Kafka Under The Hood | A Quick Hands On
 blog : true
 published: true
 date: March 01, 2020

@@ -1,5 +1,6 @@
 ---
 layout: default
+title : Blogs
 ---
 <div class="posts">
   {% for post in site.posts %}
