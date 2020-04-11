@@ -39,13 +39,13 @@ Kafka is built using zookeeper. [Zookeeper](https://zookeeper.apache.org/) is a 
 Now that we have defined all the dependencies, its time to launch our kafka cluster. All that you have to do is, navigate to the cloned repository and execute the commands below
 
 ```bash
-$ cd hands-on
-$ sh cluster-start.sh
+cd hands-on
+sh cluster-start.sh
 ```
 This should start the kafka cluster which comprises of the zookeeper and two kafka brokers. This can be verified by checking the list of running docker containers running the command below in a new terminal window.
 
 ```bash
-$ docker container ls
+docker container ls
 ```
 
 | CONTAINER ID|  IMAGE  |   COMMAND | CREATED |  STATUS | PORTS  | NAMES 
@@ -61,19 +61,22 @@ You should see three containers(one zookeeper & two kafka) up and running as sho
 Now that we have the cluster up and running we would like to see how it works. Before we start producing/consuming messages, we need a *topic*. A topic can be created in kafka by providing the topic name and some configuration details. You can find the list of topic configurations in apache kafka [documentation](https://kafka.apache.org/documentation/#topicconfigs). We create a topic by using only two configuration parameters namely ```--partitions``` & ```--replication-factor``` which indicate the number of partitions & number of replicas per partition respectively. The topic creation is carried out by execution of below command
 
 ```bash
-$ docker run --network=hands-on_kafka-tier -ti bitnami/kafka:latest kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 2 --partitions 2 --topic cars
+docker run --network=hands-on_kafka-tier -ti bitnami/kafka:latest kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 2 --partitions 2 --topic cars
 
 ```	
 
 This command results in the creation of a topic named *cars* with *two* partitions having *two* replicas each. The details of the above created topic can be seen by the using command below
 
 ```bash
-$ docker run --network=hands-on_kafka-tier -ti bitnami/kafka:latest kafka-topics.sh  --zookeeper zookeeper:2181 --describe cars
+docker run --network=hands-on_kafka-tier -ti bitnami/kafka:latest kafka-topics.sh  --zookeeper zookeeper:2181 --describe cars
 ```
 
-`Topic: cars	PartitionCount: 2	ReplicationFactor: 2	Configs:`<br>
-`Topic: cars	Partition: 0	Leader: 0	Replicas: 0,1	Isr: 0,1`<br>
-`Topic: cars	Partition: 1	Leader: 1	Replicas: 1,0	Isr: 1,0`
+
+```
+Topic: cars	PartitionCount: 2	ReplicationFactor: 2	Configs:
+Topic: cars	Partition: 0	Leader: 0	Replicas: 0,1	Isr: 0,1
+Topic: cars	Partition: 1	Leader: 1	Replicas: 1,0	Isr: 1,0
+```
 
 This output can be mapped as follows
 
@@ -95,19 +98,19 @@ As mentioned in the previous [post]({% post_url 2020-02-29-Kafka-Architecture %}
 We first setup consumers subscribed to the above generated topic followed by writing messages to the topic. This way we get to see how each message is being processed by the consumers. We will be launching two consumer instances belonging to a consumer group `car-group` & subscribe to the topic `cars`. In this working example, we set up each consumer as a separate docker container. Now, open a new terminal window and enter the command below which should launch the first consumer instance with name `consumer-0`.
 
 ```bash
-$ docker run --network=hands-on_kafka-tier --name=consumer-0 -ti bitnami/kafka:latest kafka-console-consumer.sh --bootstrap-server broker-0:9092,broker-1:9093 --topic cars --consumer-property group.id=car-group
+docker run --network=hands-on_kafka-tier --name=consumer-0 -ti bitnami/kafka:latest kafka-console-consumer.sh --bootstrap-server broker-0:9092,broker-1:9093 --topic cars --consumer-property group.id=car-group
 ```
 
 Inorder to launch the second consumer instance, open another terminal window and execute the same command with a different name say `consumer-1` as shown below.
 
 ```bash
-$ docker run --network=hands-on_kafka-tier --name=consumer-1 -ti bitnami/kafka:latest kafka-console-consumer.sh --bootstrap-server broker-0:9092,broker-1:9093 --topic cars --consumer-property group.id=car-group
+docker run --network=hands-on_kafka-tier --name=consumer-1 -ti bitnami/kafka:latest kafka-console-consumer.sh --bootstrap-server broker-0:9092,broker-1:9093 --topic cars --consumer-property group.id=car-group
 ```
 
 Now that we have launched two consumers ready to process messages from `cars`, lets check the status of these consumers through their consumer group.
 
 ```bash
-$ docker run --network=hands-on_kafka-tier -ti bitnami/kafka:latest kafka-consumer-groups.sh  --bootstrap-server broker-0:9092,broker-1:9093 --describe --group car-group
+docker run --network=hands-on_kafka-tier -ti bitnami/kafka:latest kafka-consumer-groups.sh  --bootstrap-server broker-0:9092,broker-1:9093 --describe --group car-group
 ```
 
 | TOPIC      |PARTITION|CURRENT-OFFSET| LOG-END-OFFSET | LAG | CONSUMER-ID | HOST  | CLIENT-ID |
@@ -122,7 +125,7 @@ As discussed in the previous [post]({% post_url 2020-02-29-Kafka-Architecture %}
 Now that we have the topic setup and consumers subscribed to our topic, its time for some action. Let's produce !! Open a new terminal window and enter the command below.
 
 ```bash
-$ docker run --network=hands-on_kafka-tier --name=producer -ti bitnami/kafka:latest kafka-console-producer.sh --broker-list broker-0:9092,broker-1:9093 --topic cars
+docker run --network=hands-on_kafka-tier --name=producer -ti bitnami/kafka:latest kafka-console-producer.sh --broker-list broker-0:9092,broker-1:9093 --topic cars
 ```
 This should result in a command prompt where we can write messages to our topic. Let's write our first message.
 
@@ -133,7 +136,7 @@ This should result in a command prompt where we can write messages to our topic.
 Open the terminal windows where we launched the consumer instances. You can see this message is consumed by one of those consumers. Let us also verify this by checking the status of the consumers
 
 ```bash
-$ docker run --network=hands-on_kafka-tier -ti bitnami/kafka:latest kafka-consumer-groups.sh  --bootstrap-server broker-0:9092,broker-1:9093 --describe --group car-group
+docker run --network=hands-on_kafka-tier -ti bitnami/kafka:latest kafka-consumer-groups.sh  --bootstrap-server broker-0:9092,broker-1:9093 --describe --group car-group
 ```
 
 GROUP  | TOPIC | PARTITION | CURRENT-OFFSET | LOG-END-OFFSET | LAG | CONSUMER-ID |HOST  | CLIENT-ID |
@@ -149,7 +152,7 @@ We can see that the `CURRENT-OFFSET` of consumer reading from *cars-0* is 1. Thi
 From the terminal windows running the consumer instances, we can see that this message is processed by the other consumer. Let us verify this by checking the status of the consumers again.
 
 ```bash
-$ docker run --network=hands-on_kafka-tier -ti bitnami/kafka:latest kafka-consumer-groups.sh  --bootstrap-server broker-0:9092,broker-1:9093 --describe --group car-group
+docker run --network=hands-on_kafka-tier -ti bitnami/kafka:latest kafka-consumer-groups.sh  --bootstrap-server broker-0:9092,broker-1:9093 --describe --group car-group
 ```
 
 GROUP  | TOPIC | PARTITION | CURRENT-OFFSET | LOG-END-OFFSET | LAG | CONSUMER-ID |HOST  | CLIENT-ID |
@@ -167,19 +170,19 @@ From the above results, we can clearly see that the messages are equally shared 
 So far so good. But, what if one of our brokers goes down? Such situations are very common in production environments. Since kafka is known for its fault tolerant behaviour, let's take one of our brokers down & see how kafka handles the situation.
 
 ```bash
-$ docker stop broker-0
+docker stop broker-0
 ```
 
 This command stops `broker-0` which can be verified by `docker container ls` command. Now lets check the status of our `cars` topic.
 
 ```bash
-$ docker run --network=hands-on_kafka-tier -ti bitnami/kafka:latest kafka-topics.sh  --zookeeper zookeeper:2181 --describe cars
+docker run --network=hands-on_kafka-tier -ti bitnami/kafka:latest kafka-topics.sh  --zookeeper zookeeper:2181 --describe cars
 ```
-
-`Topic: cars	PartitionCount: 2	ReplicationFactor: 2	Configs:` <br>
-`Topic: cars	Partition: 0	Leader: 1	Replicas: 0,1	Isr: 1`<br>
-`Topic: cars	Partition: 1	Leader: 1	Replicas: 1,0	Isr: 1`
-
+```
+Topic: cars	PartitionCount: 2	ReplicationFactor: 2	Configs:
+Topic: cars	Partition: 0	Leader: 1	Replicas: 0,1	Isr: 1
+Topic: cars	Partition: 1	Leader: 1	Replicas: 1,0	Isr: 1
+```
 By comparing this with the previous status of topic *cars*, we can clearly see that for *Partition: 0*, the leader has changed from `Leader: 0` to `Leader: 1` i.e *broker-0* to *broker-1*. Since, *broker-0* is down, it is not in sync with the new leader(*broker-1*) and therefore the `Isr` is changed from `0,1` to `1`. Thus the cluster stays unaffected even after one of the brokers is down, with the other broker acting as the sole leader for both the partitions. You can further check this by writing more messages and verify that they are getting processed by the consumers. 
 
 ### What if one of the consumers go down?
@@ -187,12 +190,12 @@ By comparing this with the previous status of topic *cars*, we can clearly see t
 Well, we saw kafka cluster being unaffected after one of the brokers went down. Now, lets add more chaos to the system. We now take down one of the consumers and see whether kafka can handle this failure.
 
 ```bash
-$ docker stop consumer-0
+docker stop consumer-0
 ```
 This command stops `consumer-0` which can be verified by `docker container ls` command. Now lets check the status of the consumers.
 
 ```bash
-$ docker run --network=hands-on_kafka-tier -ti bitnami/kafka:latest kafka-consumer-groups.sh  --bootstrap-server broker-1:9093 --describe --group car-group
+docker run --network=hands-on_kafka-tier -ti bitnami/kafka:latest kafka-consumer-groups.sh  --bootstrap-server broker-1:9093 --describe --group car-group
 ```
 
 GROUP  | TOPIC | PARTITION | CURRENT-OFFSET | LOG-END-OFFSET | LAG | CONSUMER-ID |HOST  | CLIENT-ID |
@@ -207,4 +210,4 @@ Both the above demonstrations indicate the fault tolerant behaviour of kafka.
 
 ## Conclusion
 
-This blog tried to give a practical explanation about interactions between architectural components within a Kafka cluster. In addition to this the hands-on also demonstrated the fault tolerant behaviour of kafka. Hopefully this gave you a good understanding on how things work under the hood. Also, you now have enough knowledge to setup your own kafka cluster. Please do share your feedback in the comments section below. In the upcoming blog post we’ll be going over the internals of Apache Kafka. Stay tuned & Happy Coding !!
+This blog tried to give a practical explanation about interactions between architectural components within a Kafka cluster. In addition to this the hands-on also demonstrated the fault tolerant behaviour of kafka. Hopefully this gave you a good understanding on how things work under the hood. Also, you now have enough knowledge to setup your own kafka cluster. Please do share your feedback in the comments section below. In the upcoming blog [post]({% post_url 2020-03-12-Kafka-Storage-Internals %}) we’ll be going over the internals of Apache Kafka. Stay tuned & Happy Coding !!

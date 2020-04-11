@@ -335,24 +335,55 @@ footer {
     }
 }
 
-table{
-    border-collapse: collapse;
-    border-spacing: 1;
-    border:2px solid #ff0000;
+table {  
+  width: 100%;
+  border-collapse: collapse; 
+}
+/* Zebra striping */
+tr:nth-of-type(odd) { 
+  background: #eee; 
+}
+th { 
+  background: #333; 
+  color: white; 
+  font-weight: bold; 
+  text-align: center;
+}
+td, th { 
+  padding: 6px; 
+  border: 1px solid #ccc; 
+  text-align: left; 
+  text-align: center; 
+  vertical-align: middle;
 }
 
-th{
-    border:2px solid #000000;
-    text-align:center;
-    padding: 5px;
-    font-style: italic;
-}
+.copy-code-button {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    padding-left: 6px;
+    padding-right: 6px;
 
-td{
-    border:2px solid #000000;
-    text-align: center;
-    padding: 8px;
-    white-space:pre-line;
+    &::before {
+        content: "Copy";
+    }
+
+    &::after {
+        margin-left: 4px;
+        content: "📋";
+        width: 1em;
+    }
+
+    // This class will be toggled via JavaScript
+    &.copied {
+        &::before {
+            content: "Copied!";
+        }
+
+        &::after {
+            content: "✔️";
+        }
+    }
 }
 
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
