@@ -13,5 +13,5 @@ The idea of this blog is to maintain a list of all my learnings & resources wrt 
 ## Logistic Regression
 
  - [Kaggle Notebook](https://www.kaggle.com/rohithsankepally/logistic-regression)
- - https://machinelearningmastery.com/logistic-regression-for-machine-learning/
+ - [Machine Learning Mastery - Logistic Regression](https://machinelearningmastery.com/logistic-regression-for-machine-learning/)
  
