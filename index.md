@@ -2,8 +2,10 @@
 layout: default
 ---
 
-Hello, my name is Rohith Reddy Sankepally. I'm a software developer based in India. Being a tech enthusiast and a software developer, I am interested and curious to learn about ways that enable software to impact the world at a large scale. While I enjoy learning and new technologies, I continuously work on adapting them in the relevant tools/projects that I work on. In my free time I blog about the technologies and problems that fascinate me. Explore my <a href="{{ site.baseurl }}/blogs">blogs</a> and <a href="{{ site.baseurl }}/projects">projects</a> to get an idea of my work. I have compiled all my experience into a timeline which is shown below. Lets <a href="{{ site.baseurl }}/contact">connect</a> if you're interested in discussing ideas and oppurtunities.
+<div class="hero-intro" markdown="1">
+I'm Rohith Reddy Sankepally, an engineering leader based in India. As AVP of Engineering at Sprinklr, I work on building products that help global brands manage customer experience at scale. I joined Sprinklr as an intern and have grown through every layer of engineering leadership since — and the problems only get more interesting. Explore my <a href="{{ site.baseurl }}/blogs">blogs</a> and <a href="{{ site.baseurl }}/projects">projects</a> to see what I've been thinking about, and <a href="{{ site.baseurl }}/contact">let's connect</a> if you'd like to talk ideas or opportunities.
+</div>
 
 <div>
-	{% include timeline.html %}	
+	{% include timeline.html %}
 </div>

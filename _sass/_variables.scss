@@ -4,19 +4,19 @@
 //
 
 // Colors
-$blue: #4183C4;
+$blue: #2563eb;
 
 // Grays
-$black: #000;
-$darkerGray: #222;
-$darkGray: #333;
-$gray: #666;
-$lightGray: #eee;
+$black: #0f172a;
+$darkerGray: #0f172a;
+$darkGray: #1e293b;
+$gray: #64748b;
+$lightGray: #e2e8f0;
 $white: #fff;
 
 // Font stacks
-$helvetica: Calibri, Arial, sans-serif;
-$helveticaNeue: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$helvetica: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+$helveticaNeue: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 $georgia: Georgia, serif;
 
 // Mobile breakpoints
@@ -27,21 +27,21 @@ $georgia: Georgia, serif;
 }
 
 // Main color
-$primary-color: #000;
+$primary-color: #0f172a;
 
 // Anchor color
-$secondary-color: #00cdff;
+$secondary-color: #2563eb;
 
 // Font color
 $font-color: #fff;
 
-$navbar-text-shadow: true;
-$header-text-shadow: true;
-$header-background-color: $primary-color;
-$intro-text-color: $font-color;
-$navbar-color: $font-color;
-$navbar-lg-collapse-background-color: $header-background-color;
+$navbar-text-shadow: false;
+$header-text-shadow: false;
+$header-background-color: $white;
+$intro-text-color: $darkGray;
+$navbar-color: $darkGray;
+$navbar-lg-collapse-background-color: $white;
 $navbar-lg-background: transparent;
-$navbar-sm-background-color: $navbar-lg-collapse-background-color;
+$navbar-sm-background-color: $white;
 
 $social-buttons-color: $secondary-color;

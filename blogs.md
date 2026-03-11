@@ -2,19 +2,10 @@
 layout: default
 title : Blogs
 ---
-<div class="posts">
+<ul class="post-list">
   {% for post in site.posts %}
-  	{% if post.blog == true and post.published == true %}
-	    <article class="post">
-
-      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
-
-      <div class="entry">
-        {{ post.excerpt }}
-      </div>
-
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
-    </article>  
+    {% if post.blog == true and post.published == true %}
+    <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
     {% endif %}
   {% endfor %}
-</div>
+</ul>

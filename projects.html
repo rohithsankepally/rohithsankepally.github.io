@@ -3,19 +3,16 @@ layout: default
 title : Projects
 published: true
 ---
-<div class="posts">
+<ul class="post-list">
   {% for post in site.posts %}
-  	{% if post.project == true %}
-	    <article class="post">
-
-      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
-
-      <div class="entry">
-        {{ post.excerpt }}
-      </div>
-
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
-    </article>
+    {% if post.project == true %}
+    <li>
+      {% if post.link %}
+        <a href="{{ post.link }}" target="_blank">{{ post.title }}</a>
+      {% else %}
+        <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+      {% endif %}
+    </li>
     {% endif %}
   {% endfor %}
-</div>
+</ul>

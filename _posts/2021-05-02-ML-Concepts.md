@@ -2,7 +2,7 @@
 layout: post
 title: Machine Learning Concepts
 blog : true
-published: true
+published: false
 date: May 02, 2021
 comments: true
 ---
